@@ -1,0 +1,221 @@
+*{
+    margin: 0;
+    box-sizing:border-box
+}
+
+body{
+  background-color: rgb(218, 216, 216);
+}
+
+.header{
+    background-color: rgb(42, 42, 182);
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.navig{
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navig select{
+    height: 30px;
+}
+
+.logo{
+    color: #fff;
+    font-size: 30px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login{
+    color: #fff;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.boton{
+    background-color: rgb(233, 215, 50);
+    border-radius: 5px;
+    padding: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    color: rgb(58, 33, 18);
+}
+
+/* Slideshow container */
+.slideshow-container {
+    max-width: 100%;
+    position: relative;
+    margin: auto;
+  }
+  
+  /* Hide the images by default */
+  .mySlides {
+    display: none;
+  }
+  
+  /* Next & previous buttons */
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+  
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+  }
+  
+  /* Caption text */
+  .text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* Number text (1/3 etc) */
+  .numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+  }
+  
+  /* The dots/bullets/indicators */
+  .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+  
+  .active, .dot:hover {
+    background-color: #717171;
+  }
+  
+  /* Fading animation */
+  .fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+  
+  @keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+  }
+
+.info{
+    margin-top: 100px;
+    height: 300px;
+    background-color: #242424;
+  }
+
+.menu{
+  min-height: 400px;
+  padding: 20px 0;
+  width: 22%;
+  background-color: rgb(7, 24, 102);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu a{
+  width: 80%;
+  margin: 10px 0;
+  background-color: rgb(88, 88, 235);
+  text-decoration: none;
+  padding: 10px 5px;
+  text-align: center;
+  color: #f3dd1a;
+}
+
+.container{
+  margin-top: 20px;
+  width: 100%;
+  background-color: #d4bb76;
+  display: flex;
+}
+
+.table-container{
+  width: 90%;
+  padding: 0 25px;
+}
+
+.tabla{
+  width: 100%;
+}
+
+.tabla, th, td{
+  border: 1px solid black;
+  border-collapse:collapse;
+}
+
+.tabla{
+  height: 100px;
+}
+
+.tabla td{
+  border-collapse: inherit;
+  text-align: center;
+}
+
+.tabla-head{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.input-form{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.input-form input{
+  height: 30px;
+  border-radius: 3px;
+  border-width: 1px;
+  border-color: #242424;
+}
+
+.form-guar{
+  width: 30%;
+}
+
+.boton-save{
+  width: 100%;
+  float: right;
+}
