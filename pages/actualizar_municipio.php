@@ -1,3 +1,14 @@
+<?php
+
+require "conn.php";
+
+$id = $_POST["idreal"];
+$municipio = $_POST["nombre"];
+
+$sql_actualizar = "UPDATE municipio SET municipio = '$municipio' WHERE id_municipio=" . $id;
+$conn->query($sql_actualizar);
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -25,6 +36,7 @@
             <a href="../index.php" class="login">Logout</a>
         </nav>
     </header>
+
     <!-- Slideshow container -->
     <div class="slideshow-container">
 
@@ -49,16 +61,31 @@
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
     <br>
-
     <!-- The dots/circles -->
     <div style="text-align:center">
         <span class="dot" onclick="currentSlide(1)"></span>
         <span class="dot" onclick="currentSlide(2)"></span>
         <span class="dot" onclick="currentSlide(3)"></span>
     </div>
-    <div class="container">
-        <?php require "aside_menu.php" ?>
 
+    <div class="container">
+        <?php require 'aside_menu.php'?>
+
+        <div class="table-container">
+            <div class="tabla-head">
+                <h1>Municipio</h1>
+            </div>
+            <form action="guardar_usuario.php" method="post" class="form-guar">
+                <div class="input-form">
+                    <label for="login">Login</label>
+                    <input type="text" name="login" id="login" value="<?php echo $id ?>" disabled>
+                </div>
+                <div class="input-form">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" name="nombre" id="nombre" value="<?php echo $municipio ?>" disabled>
+                </div>
+            </form>
+        </div>
     </div>
     <section class="info">
 

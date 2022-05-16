@@ -9,12 +9,13 @@
     <title>Cinépolis</title>
 </head>
 <?php
-    require "conn.php";
-    $id = $_GET["id"];
-    $sql = "SELECT * FROM usuario WHERE id_usuario=" .$id;
-    $result = $conn->query($sql);
-    $rows = $result->fetchAll();
+require "conn.php";
+$id = $_GET["id"];
+$sql = "SELECT * FROM usuario WHERE id_usuario=" . $id;
+$result = $conn->query($sql);
+$rows = $result->fetchAll();
 ?>
+
 <body>
     <header class="header">
         <nav class="navig">
@@ -64,38 +65,33 @@
     </div>
 
     <div class="container">
-        <aside class="menu">
-            <a href="#">Menu</a>
-            <a href="#">Municipios</a>
-            <a href="#">Cines</a>
-            <a href="#">Peliculas</a>
-            <a href="usuarios.php">Usuarios</a>
-        </aside>
+        <?php require 'aside_menu.php' ?>
+        
         <div class="table-container">
             <div class="tabla-head">
                 <h1>Usuarios</h1>
             </div>
-            <?php foreach ($rows as $row){?>
-            <form action="actualizar_usuario.php" method="post" class="form-guar">
-                <div class="input-form">
-                    <label for="login">Login</label>
-                    <input type="text" name="login" id="login" value="<?php echo $row['id_usuario']?>" disabled>
-                    <input type="hidden" name="loginreal" value="<?php echo $row['id_usuario']?>">
-                </div>
-                <div class="input-form">
-                    <label for="nip">Nip</label>
-                    <input type="text" name="nip" id="nip" value="<?php echo $row['nip']?>">
-                </div>
-                <div class="input-form">
-                    <label for="tipo">Tipo</label>
-                    <input type="text" name="tipo" id="tipo" value="<?php echo $row['tipousuario']?>">
-                </div>
-                <div class="input-form">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" name="nombre" id="nombre" value="<?php echo $row['nombrecompleto']?>">
-                </div>
-                <input type="submit" value="Guardar" class="boton boton-save">
-            </form>
+            <?php foreach ($rows as $row) { ?>
+                <form action="actualizar_usuario.php" method="post" class="form-guar">
+                    <div class="input-form">
+                        <label for="login">Login</label>
+                        <input type="text" name="login" id="login" value="<?php echo $row['id_usuario'] ?>" disabled>
+                        <input type="hidden" name="loginreal" value="<?php echo $row['id_usuario'] ?>">
+                    </div>
+                    <div class="input-form">
+                        <label for="nip">Nip</label>
+                        <input type="text" name="nip" id="nip" value="<?php echo $row['nip'] ?>">
+                    </div>
+                    <div class="input-form">
+                        <label for="tipo">Tipo</label>
+                        <input type="text" name="tipo" id="tipo" value="<?php echo $row['tipousuario'] ?>">
+                    </div>
+                    <div class="input-form">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" name="nombre" id="nombre" value="<?php echo $row['nombrecompleto'] ?>">
+                    </div>
+                    <input type="submit" value="Guardar" class="boton boton-save">
+                </form>
             <?php } ?>
         </div>
     </div>

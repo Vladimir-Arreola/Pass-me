@@ -84,18 +84,12 @@ if (empty($rows)) {
     </div>
 
     <div class="container">
-        <aside class="menu">
-            <a href="#">Menu</a>
-            <a href="#">Municipios</a>
-            <a href="#">Cines</a>
-            <a href="#">Peliculas</a>
-            <a href="usuarios.php">Usuarios</a>
-        </aside>
+        <?php require 'aside_menu.php' ?>
 
         <div class="table-container">
             <div class="tabla-head">
                 <h1>Usuarios</h1>
-                <h2><?php echo $result?></h2>
+                <h2><?php echo $result ?></h2>
             </div>
             <form action="guardar_usuario.php" method="post" class="form-guar">
                 <div class="input-form">

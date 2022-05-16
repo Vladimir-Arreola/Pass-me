@@ -25,6 +25,7 @@
             <a href="../index.php" class="login">Logout</a>
         </nav>
     </header>
+
     <!-- Slideshow container -->
     <div class="slideshow-container">
 
@@ -49,16 +50,32 @@
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
     <br>
-
     <!-- The dots/circles -->
     <div style="text-align:center">
         <span class="dot" onclick="currentSlide(1)"></span>
         <span class="dot" onclick="currentSlide(2)"></span>
         <span class="dot" onclick="currentSlide(3)"></span>
     </div>
-    <div class="container">
-        <?php require "aside_menu.php" ?>
 
+    <div class="container">
+        <?php require 'aside_menu.php' ?>
+
+        <div class="table-container">
+            <div class="tabla-head">
+                <h1>Municipios</h1>
+            </div>
+            <form action="guardar_municipio.php" method="post" class="form-guar">
+                <div class="input-form">
+                    <label for="login">Id</label>
+                    <input type="text" name="id_municipio" id="id_municipio">
+                </div>
+                <div class="input-form">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" name="nombre" id="nombre">
+                </div>
+                <input type="submit" value="Guardar" class="boton boton-save">
+            </form>
+        </div>
     </div>
     <section class="info">
 

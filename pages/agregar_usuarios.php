@@ -58,13 +58,8 @@
     </div>
 
     <div class="container">
-        <aside class="menu">
-            <a href="#">Menu</a>
-            <a href="#">Municipios</a>
-            <a href="#">Cines</a>
-            <a href="#">Peliculas</a>
-            <a href="usuarios.php">Usuarios</a>
-        </aside>
+        <?php require 'aside_menu.php' ?>
+
         <div class="table-container">
             <div class="tabla-head">
                 <h1>Usuarios</h1>

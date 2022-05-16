@@ -12,7 +12,7 @@
 <body>
     <?php require "conn.php";
 
-    $sql = "SELECT * FROM usuario";
+    $sql = "SELECT * FROM municipio";
     $result = $conn->query($sql);
     $rows = $result->fetchAll();
     ?>
@@ -64,36 +64,27 @@
     </div>
 
     <div class="container">
-        <aside class="menu">
-            <a href="#">Menu</a>
-            <a href="#">Municipios</a>
-            <a href="#">Cines</a>
-            <a href="#">Peliculas</a>
-            <a href="usuarios.php">Usuarios</a>
-        </aside>
+        <?php require "aside_menu.php" ?>
+        
         <div class="table-container">
             <div class="tabla-head">
-                <h1>Usuarios</h1>
-                <a href="agregar_usuarios.php">Agregar usuario</a>
+                <h1>Municipios</h1>
+                <a href="agregar_municipio.php">Agregar municipio</a>
             </div>
             <table class="tabla">
                 <thead>
-                    <th>Login</th>
-                    <th>Nip</th>
-                    <th>Tipo de usuario</th>
-                    <th>Nombre</th>
+                    <th>ID</th>
+                    <th>Municipio</th>
                     <th>Editar</th>
                     <th>Borrar</th>
                 </thead>
                 <tbody>
                     <?php foreach ($rows as $row) { ?>
                         <tr>
-                            <td><?php echo $row['id_usuario'] ?></td>
-                            <td><?php echo $row['nip'] ?></td>
-                            <td><?php echo $row['tipousuario'] ?></td>
-                            <td><?php echo $row['nombrecompleto'] ?></td>
-                            <td><a href="editar_usuarios.php?id=<?php echo $row['id_usuario'] ?>">Editar</a></td>
-                            <td><a href="borrar_usuario.php?id=<?php echo $row['id_usuario'] ?>" onclick="return confirm('Estás seguro de querer borrar?');">Borrar</a></td>
+                            <td><?php echo $row['id_municipio'] ?></td>
+                            <td><?php echo $row['municipio'] ?></td>
+                            <td><a href="editar_municipio.php?id=<?php echo $row['id_municipio'] ?>">Editar</a></td>
+                            <td><a href="borrar_municipio.php?id=<?php echo $row['id_municipio'] ?>" onclick="return confirm('Estás seguro de querer borrar?');">Borrar</a></td>
                         </tr>
                     <?php } ?>
                 </tbody>
