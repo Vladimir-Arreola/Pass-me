@@ -11,12 +11,12 @@
 
 <body>
     <?php require "conn.php";
-
-    $sql = "SELECT * FROM usuario";
+    $cine = $_POST['cine'];
+    $sql = "SELECT P.*, C.nombre_cine FROM pelicula P INNER JOIN cine C on P.id_cine = C.id_cine WHERE P.id_cine= '$cine'";
     $result = $conn->query($sql);
     $rows = $result->fetchAll();
     ?>
-    <?php require 'header.php' ?>
+    <?php require 'header.php'?>
 
     <!-- Slideshow container -->
     <div class="slideshow-container">
@@ -50,30 +50,45 @@
     </div>
 
     <div class="container">
-        <?php require 'aside_menu.php' ?>
+        <?php require "aside_menu.php" ?>
+        
         <div class="table-container">
             <div class="tabla-head">
-                <h1>Usuarios</h1>
-                <a href="agregar_usuarios.php">Agregar usuario</a>
+                <h1>Películas</h1>
+                <a href="agregar_pelis.php">Agregar película</a>
             </div>
             <table class="tabla">
                 <thead>
-                    <th>Login</th>
-                    <th>Nip</th>
-                    <th>Tipo de usuario</th>
-                    <th>Nombre</th>
+                    <th>ID</th>
+                    <th>Cine</th>
+                    <th>Pelicula</th>
+                    <th>Clasificación</th>
+                    <th>Director</th>
+                    <th>Genero</th>
+                    <th>Duración</th>
+                    <th>Idioma</th>
+                    <th>Horario</th>
+                    <th>Poster</th>
                     <th>Editar</th>
                     <th>Borrar</th>
                 </thead>
                 <tbody>
                     <?php foreach ($rows as $row) { ?>
                         <tr>
-                            <td><?php echo $row['id_usuario'] ?></td>
-                            <td><?php echo $row['nip'] ?></td>
-                            <td><?php echo $row['tipousuario'] ?></td>
-                            <td><?php echo $row['nombrecompleto'] ?></td>
-                            <td><a href="editar_usuarios.php?id=<?php echo $row['id_usuario'] ?>">Editar</a></td>
-                            <td><a href="borrar_usuario.php?id=<?php echo $row['id_usuario'] ?>" onclick="return confirm('Estás seguro de querer borrar?');">Borrar</a></td>
+                            <td><?php echo $row['id_pelicula'] ?></td>
+                            <td><?php echo $row['nombre_cine']?></td>
+                            <td><?php echo $row['pelicula'] ?></td>
+                            <td><?php echo $row['clasificacion']?></td>
+                            <td><?php echo $row['director']?></td>
+                            <td><?php echo $row['genero']?></td>
+                            <td><?php echo $row['duracion']?></td>
+                            <td><?php echo $row['idioma']?></td>
+                            <td><?php echo $row['horario']?></td>
+                            <td>
+                                <img src="data:image/png;base64, <?php echo base64_encode($row['foto_poster'])?>" alt="poster" class="poster-peli">
+                            </td>
+                            <td><a href="editar_pelicula.php?id=<?php echo $row['id_pelicula'] ?>">Editar</a></td>
+                            <td><a href="borrar_pelicula.php?id=<?php echo $row['id_pelicula'] ?>" onclick="return confirm('Estás seguro de querer borrar?');">Borrar</a></td>
                         </tr>
                     <?php } ?>
                 </tbody>

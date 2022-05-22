@@ -13,25 +13,12 @@ $rows = $result->fetchAll();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/validar_pelicula.js"></script>
     <title>Cinépolis</title>
 </head>
 
 <body>
-    <header class="header">
-        <nav class="navig">
-            <a href="#" class="logo">Cinépolis</a>
-            <div>
-                <select name="" id="">
-                    <option value="0">Selecciona tu municipio</option>
-                </select>
-                <select name="" id="">
-                    <option value="0">Selecciona el cine...</option>
-                </select>
-            </div>
-            <a href="#" class="boton">VER CARTELERA</a>
-            <a href="../index.php" class="login">Logout</a>
-        </nav>
-    </header>
+    <?php require 'header.php'?>
 
     <!-- Slideshow container -->
     <div class="slideshow-container">
@@ -71,7 +58,7 @@ $rows = $result->fetchAll();
             <div class="tabla-head">
                 <h1>Películas</h1>
             </div>
-            <form action="guardar_pelicula.php" method="post" enctype='multipart/form-data'   class="form-guar">
+            <form action="guardar_pelicula.php" method="post" enctype='multipart/form-data' class="form-guar" onsubmit="return validarPeli()">
                 <div class="input-form">
                     <label for="id_pelicula">Id</label>
                     <input type="text" name="id_pelicula" id="id_pelicula">
@@ -79,6 +66,7 @@ $rows = $result->fetchAll();
                 <div class="input-form">
                     <label for="cine">Cine</label>
                     <select name="cine" id="cine">
+                        <option value="0" selected>Selecciona un cine...</option>
                         <?php foreach($rows as $row){?>
                             <option value="<?php echo $row['id_cine']?>"><?php echo $row['nombre_cine']?></option>
                         <?php } ?>

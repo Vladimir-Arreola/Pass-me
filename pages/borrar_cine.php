@@ -1,25 +1,25 @@
 <?php
-    require "conn.php";
+require "conn.php";
 
-    $id = $_GET["id"];
-    $sql_valida = "SELECT C.*, M.municipio FROM cine C INNER JOIN municipio M on C.id_municipio = M.id_municipio WHERE id_cine=" . $id;
+$id = $_GET["id"];
+$sql_valida = "SELECT C.*, M.municipio FROM cine C INNER JOIN municipio M on C.id_municipio = M.id_municipio WHERE id_cine=" . $id;
 
-    $result = $conn->query($sql_valida);
-    $rows = $result->fetchAll();
-    if (empty($rows)) {
-        $result = "No existe el registro o ya fue borrado";
-        $datos = array();
-        for ($i = 0; $i < 7; $i++) {
-            $datos[$i] = 'No existe dato';
-        }
-    } else {
-        $result = "Se borró exitosamente";
-        foreach ($rows as $row) {
-            $datos = array($row['id_cine'], $row['nombre_cine'],$row['municipio'], $row['no_salas'], $row['telefono_cine'], $row['domicilio_cine'], $row['correo_cine']);
-        }
-        $sql_borrar = "DELETE FROM cine WHERE id_cine=" . $id;
-        $conn->query($sql_borrar);
+$result = $conn->query($sql_valida);
+$rows = $result->fetchAll();
+if (empty($rows)) {
+    $result = "No existe el registro o ya fue borrado";
+    $datos = array();
+    for ($i = 0; $i < 7; $i++) {
+        $datos[$i] = 'No existe dato';
     }
+} else {
+    $result = "Se borró exitosamente";
+    foreach ($rows as $row) {
+        $datos = array($row['id_cine'], $row['nombre_cine'], $row['municipio'], $row['no_salas'], $row['telefono_cine'], $row['domicilio_cine'], $row['correo_cine']);
+    }
+    $sql_borrar = "DELETE FROM cine WHERE id_cine=" . $id;
+    $conn->query($sql_borrar);
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -33,21 +33,7 @@
 </head>
 
 <body>
-    <header class="header">
-        <nav class="navig">
-            <a href="#" class="logo">Cinépolis</a>
-            <div>
-                <select name="" id="">
-                    <option value="0">Selecciona tu municipio</option>
-                </select>
-                <select name="" id="">
-                    <option value="0">Selecciona el cine...</option>
-                </select>
-            </div>
-            <a href="#" class="boton">VER CARTELERA</a>
-            <a href="../index.php" class="login">Logout</a>
-        </nav>
-    </header>
+    <?php require 'header.php' ?>
 
     <!-- Slideshow container -->
     <div class="slideshow-container">
@@ -86,37 +72,37 @@
         <div class="table-container">
             <div class="tabla-head">
                 <h1>Cines</h1>
-                <?php echo $result?>
+                <?php echo $result ?>
             </div>
             <form action="actualizar_cine.php" method="post" class="form-guar">
-                    <div class="input-form">
-                        <label for="login">Id</label>
-                        <input type="text" name="id_cine" id="id_cine" value="<?php echo $datos[0] ?>" disabled>
-                    </div>
-                    <div class="input-form">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" name="nombre" id="nombre" value="<?php echo $datos[1] ?>" disabled>
-                    </div>
-                    <div class="input-form">
-                        <label for="municipio">Municipios</label>
-                        <input type="text" name="municipio" id="municipio" value="<?php echo $datos[2] ?>" disabled>
-                    </div>
-                    <div class="input-form">
-                        <label for="salas">Salas</label>
-                        <input type="text" name="salas" id="salas" value="<?php echo $datos[3] ?>" disabled>
-                    </div>
-                    <div class="input-form">
-                        <label for="telefono">Telefono</label>
-                        <input type="text" name="telefono" id="telefono" maxlength="10" value="<?php echo $datos[4] ?>" disabled>
-                    </div>
-                    <div class="input-form">
-                        <label for="domicilio">Domicilio</label>
-                        <input type="text" name="domicilio" id="domicilio" maxlength="10" value="<?php echo $datos[5] ?>" disabled>
-                    </div>
-                    <div class="input-form">
-                        <label for="correo">Correo</label>
-                        <input type="text" name="correo" id="correo" value="<?php echo $datos[6] ?> " disabled>
-                    </div>
+                <div class="input-form">
+                    <label for="login">Id</label>
+                    <input type="text" name="id_cine" id="id_cine" value="<?php echo $datos[0] ?>" disabled>
+                </div>
+                <div class="input-form">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" name="nombre" id="nombre" value="<?php echo $datos[1] ?>" disabled>
+                </div>
+                <div class="input-form">
+                    <label for="municipio">Municipios</label>
+                    <input type="text" name="municipio" id="municipio" value="<?php echo $datos[2] ?>" disabled>
+                </div>
+                <div class="input-form">
+                    <label for="salas">Salas</label>
+                    <input type="text" name="salas" id="salas" value="<?php echo $datos[3] ?>" disabled>
+                </div>
+                <div class="input-form">
+                    <label for="telefono">Telefono</label>
+                    <input type="text" name="telefono" id="telefono" maxlength="10" value="<?php echo $datos[4] ?>" disabled>
+                </div>
+                <div class="input-form">
+                    <label for="domicilio">Domicilio</label>
+                    <input type="text" name="domicilio" id="domicilio" maxlength="10" value="<?php echo $datos[5] ?>" disabled>
+                </div>
+                <div class="input-form">
+                    <label for="correo">Correo</label>
+                    <input type="text" name="correo" id="correo" value="<?php echo $datos[6] ?> " disabled>
+                </div>
             </form>
         </div>
     </div>

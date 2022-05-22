@@ -10,7 +10,7 @@ $domicilio = $_POST["domicilio"];
 $telefono = $_POST["telefono"];
 $correo = $_POST["correo"];
 
-$sql_municipio = "SELECT * FROM municipio WHERE id_municipio=" .$municipio;
+$sql_municipio = "SELECT * FROM municipio WHERE id_municipio=" . $municipio;
 $result_municipio = $conn->query($sql_municipio);
 $rows_municipios = $result_municipio->fetchAll();
 
@@ -33,21 +33,7 @@ $conn->query($sql_actualizar);
 </head>
 
 <body>
-    <header class="header">
-        <nav class="navig">
-            <a href="#" class="logo">Cinépolis</a>
-            <div>
-                <select name="" id="">
-                    <option value="0">Selecciona tu municipio</option>
-                </select>
-                <select name="" id="">
-                    <option value="0">Selecciona el cine...</option>
-                </select>
-            </div>
-            <a href="#" class="boton">VER CARTELERA</a>
-            <a href="../index.php" class="login">Logout</a>
-        </nav>
-    </header>
+    <?php require 'header.php' ?>
 
     <!-- Slideshow container -->
     <div class="slideshow-container">
@@ -102,19 +88,19 @@ $conn->query($sql_actualizar);
                 </div>
                 <div class="input-form">
                     <label for="salas">Salas</label>
-                    <input type="text" name="salas" id="salas" value="<?php echo $salas?>" disabled>
+                    <input type="text" name="salas" id="salas" value="<?php echo $salas ?>" disabled>
                 </div>
                 <div class="input-form">
                     <label for="telefono">Telefono</label>
-                    <input type="text" name="telefono" id="telefono" maxlength="10" value="<?php echo $telefono?>" disabled>
+                    <input type="text" name="telefono" id="telefono" maxlength="10" value="<?php echo $telefono ?>" disabled>
                 </div>
                 <div class="input-form">
                     <label for="domicilio">Domicilio</label>
-                    <input type="text" name="domicilio" id="domicilio" maxlength="10" value="<?php echo $domicilio?>" disabled>
+                    <input type="text" name="domicilio" id="domicilio" maxlength="10" value="<?php echo $domicilio ?>" disabled>
                 </div>
                 <div class="input-form">
                     <label for="correo">Correo</label>
-                    <input type="text" name="correo" id="correo" value="<?php echo $correo?>" disabled>
+                    <input type="text" name="correo" id="correo" value="<?php echo $correo ?>" disabled>
                 </div>
             </form>
         </div>

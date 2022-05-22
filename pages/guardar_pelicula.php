@@ -37,21 +37,7 @@ if (empty($rows)) {
 </head>
 
 <body>
-    <header class="header">
-        <nav class="navig">
-            <a href="#" class="logo">Cinépolis</a>
-            <div>
-                <select name="" id="">
-                    <option value="0">Selecciona tu municipio</option>
-                </select>
-                <select name="" id="">
-                    <option value="0">Selecciona el cine...</option>
-                </select>
-            </div>
-            <a href="#" class="boton">VER CARTELERA</a>
-            <a href="../index.php" class="login">Logout</a>
-        </nav>
-    </header>
+    <?php require 'header.php' ?>
 
     <!-- Slideshow container -->
     <div class="slideshow-container">
@@ -94,41 +80,41 @@ if (empty($rows)) {
             <form action="guardar_pelicula.php" method="post" class="form-guar">
                 <div class="input-form">
                     <label for="id_peliculas">Id</label>
-                    <input type="text" name="id_peliculas" id="id_peliculas" value="<?php echo $id?>" disabled>
+                    <input type="text" name="id_peliculas" id="id_peliculas" value="<?php echo $id ?>" disabled>
                 </div>
                 <div class="input-form">
                     <label for="cine">Cine</label>
-                    
+
                 </div>
                 <div class="input-form">
                     <label for="nombre">Nombre</label>
-                    <input type="text" name="nombre" id="nombre" value="<?php echo $nombre?>" disabled>
+                    <input type="text" name="nombre" id="nombre" value="<?php echo $nombre ?>" disabled>
                 </div>
                 <div class="input-form">
                     <label for="clasificación">Clasificación</label>
-                    <input type="text" name="clasificación" id="clasificación" value="<?php echo $clasificacion?>" disabled>
+                    <input type="text" name="clasificación" id="clasificación" value="<?php echo $clasificacion ?>" disabled>
                 </div>
                 <div class="input-form">
                     <label for="director">Director</label>
-                    <input type="text" name="director" id="director" value="<?php echo $director?>" disabled>
+                    <input type="text" name="director" id="director" value="<?php echo $director ?>" disabled>
                 </div>
                 <div class="input-form">
                     <label for="genero">Genero</label>
-                    <input type="text" name="genero" id="genero" value="<?php echo $genero?>" disabled>
+                    <input type="text" name="genero" id="genero" value="<?php echo $genero ?>" disabled>
                 </div>
                 <div class="input-form">
                     <label for="duracion">Duracion</label>
-                    <input type="time" name="duracion" id="duracion" value="<?php echo $duracion?>" disabled>
+                    <input type="time" name="duracion" id="duracion" value="<?php echo $duracion ?>" disabled>
                 </div>
                 <div class="input-form">
                     <label for="idioma">Idioma</label>
-                    <input type="text" name="idioma" id="idioma" value="<?php echo $idioma?>" disabled>
+                    <input type="text" name="idioma" id="idioma" value="<?php echo $idioma ?>" disabled>
                 </div>
                 <div class="input-form">
                     <label for="horario">Horario</label>
-                    <input type="datetime-local" name="horario" id="horario" value="<?php echo $horario?>" disabled>
+                    <input type="datetime-local" name="horario" id="horario" value="<?php echo $horario ?>" disabled>
                 </div>
-               
+
             </form>
         </div>
     </div>

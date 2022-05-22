@@ -36,21 +36,7 @@ if (empty($rows)) {
 </head>
 
 <body>
-    <header class="header">
-        <nav class="navig">
-            <a href="#" class="logo">Cinépolis</a>
-            <div>
-                <select name="" id="">
-                    <option value="0">Selecciona tu municipio</option>
-                </select>
-                <select name="" id="">
-                    <option value="0">Selecciona el cine...</option>
-                </select>
-            </div>
-            <a href="#" class="boton">VER CARTELERA</a>
-            <a href="../index.php" class="login">Logout</a>
-        </nav>
-    </header>
+    <?php require 'header.php' ?>
 
     <!-- Slideshow container -->
     <div class="slideshow-container">

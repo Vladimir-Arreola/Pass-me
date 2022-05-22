@@ -18,21 +18,7 @@ $rows = $result->fetchAll();
 ?>
 
 <body>
-    <header class="header">
-        <nav class="navig">
-            <a href="#" class="logo">Cinépolis</a>
-            <div>
-                <select name="" id="">
-                    <option value="0">Selecciona tu municipio</option>
-                </select>
-                <select name="" id="">
-                    <option value="0">Selecciona el cine...</option>
-                </select>
-            </div>
-            <a href="#" class="boton">VER CARTELERA</a>
-            <a href="../index.php" class="login">Logout</a>
-        </nav>
-    </header>
+    <?php require 'header.php' ?>
 
     <!-- Slideshow container -->
     <div class="slideshow-container">
@@ -67,7 +53,7 @@ $rows = $result->fetchAll();
 
     <div class="container">
         <?php require 'aside_menu.php' ?>
-        
+
         <div class="table-container">
             <div class="tabla-head">
                 <h1>Usuarios</h1>

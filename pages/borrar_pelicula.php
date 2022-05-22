@@ -36,22 +36,7 @@ if (empty($rows)) {
 </head>
 
 <body>
-    <header class="header">
-        <nav class="navig">
-            <a href="#" class="logo">Cinépolis</a>
-            <div>
-                <select name="" id="">
-                    <option value="0">Selecciona tu municipio</option>
-                </select>
-                <select name="" id="">
-                    <option value="0">Selecciona el cine...</option>
-                </select>
-            </div>
-            <a href="#" class="boton">VER CARTELERA</a>
-            <a href="../index.php" class="login">Logout</a>
-        </nav>
-    </header>
-
+    <?php require 'header.php' ?>
     <!-- Slideshow container -->
     <div class="slideshow-container">
 
@@ -89,7 +74,7 @@ if (empty($rows)) {
         <div class="table-container">
             <div class="tabla-head">
                 <h1>Películas</h1>
-                <?php echo $result?>
+                <?php echo $result ?>
             </div>
             <form action="guardar_pelicula.php" method="post" class="form-guar">
                 <div class="input-form">
@@ -98,7 +83,7 @@ if (empty($rows)) {
                 </div>
                 <div class="input-form">
                     <label for="cine">Cine</label>
-                    <input type="text" name="cine" id="cine" value="<?php echo $datos[1]?>" disabled>
+                    <input type="text" name="cine" id="cine" value="<?php echo $datos[1] ?>" disabled>
                 </div>
                 <div class="input-form">
                     <label for="nombre">Nombre</label>

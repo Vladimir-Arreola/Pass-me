@@ -1,26 +1,26 @@
 <?php
-    require "conn.php";
+require "conn.php";
 
-    $id = $_GET["id"];
-    
-    $sql_valida = "SELECT * FROM municipio WHERE id_municipio=" . $id;
-    $result = $conn->query($sql_valida);
-    $rows = $result->fetchAll();
-    
-    if (empty($rows)) {
-        $result = "No existe el registro o ya fue borrado";
-        $datos = array();
-        for ($i = 0; $i < 2; $i++) {
-            $datos[$i] = 'No existe dato';
-        }
-    } else {
-        $result = "Se borró exitosamente";
-        foreach ($rows as $row) {
-            $datos = array($row['id_municipio'], $row['municipio']);
-        }
-        $sql_borrar = "DELETE FROM municipio WHERE id_municipio=" . $id;
-        $conn->query($sql_borrar);
+$id = $_GET["id"];
+
+$sql_valida = "SELECT * FROM municipio WHERE id_municipio=" . $id;
+$result = $conn->query($sql_valida);
+$rows = $result->fetchAll();
+
+if (empty($rows)) {
+    $result = "No existe el registro o ya fue borrado";
+    $datos = array();
+    for ($i = 0; $i < 2; $i++) {
+        $datos[$i] = 'No existe dato';
     }
+} else {
+    $result = "Se borró exitosamente";
+    foreach ($rows as $row) {
+        $datos = array($row['id_municipio'], $row['municipio']);
+    }
+    $sql_borrar = "DELETE FROM municipio WHERE id_municipio=" . $id;
+    $conn->query($sql_borrar);
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -34,21 +34,7 @@
 </head>
 
 <body>
-    <header class="header">
-        <nav class="navig">
-            <a href="#" class="logo">Cinépolis</a>
-            <div>
-                <select name="" id="">
-                    <option value="0">Selecciona tu municipio</option>
-                </select>
-                <select name="" id="">
-                    <option value="0">Selecciona el cine...</option>
-                </select>
-            </div>
-            <a href="#" class="boton">VER CARTELERA</a>
-            <a href="../index.php" class="login">Logout</a>
-        </nav>
-    </header>
+    <?php require 'header.php' ?>
 
     <!-- Slideshow container -->
     <div class="slideshow-container">
@@ -91,11 +77,11 @@
             <form action="actualizar_municipio.php" method="post" class="form-guar">
                 <div class="input-form">
                     <label for="login">Id</label>
-                    <input type="text" name="id_municipio" id="id_municipio" value="<?php echo $datos[0]?>" disabled>
+                    <input type="text" name="id_municipio" id="id_municipio" value="<?php echo $datos[0] ?>" disabled>
                 </div>
                 <div class="input-form">
                     <label for="nombre">Nombre</label>
-                    <input type="text" name="nombre" id="nombre" value="<?php echo $datos[1]?>">
+                    <input type="text" name="nombre" id="nombre" value="<?php echo $datos[1] ?>">
                 </div>
             </form>
         </div>

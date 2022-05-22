@@ -16,21 +16,7 @@
     $result = $conn->query($sql);
     $rows = $result->fetchAll();
     ?>
-    <header class="header">
-        <nav class="navig">
-            <a href="#" class="logo">Cinépolis</a>
-            <div>
-                <select name="" id="">
-                    <option value="0">Selecciona tu municipio</option>
-                </select>
-                <select name="" id="">
-                    <option value="0">Selecciona el cine...</option>
-                </select>
-            </div>
-            <a href="#" class="boton">VER CARTELERA</a>
-            <a href="../index.php" class="login">Logout</a>
-        </nav>
-    </header>
+    <?php require 'header.php' ?>
 
     <!-- Slideshow container -->
     <div class="slideshow-container">
@@ -65,7 +51,7 @@
 
     <div class="container">
         <?php require "aside_menu.php" ?>
-        
+
         <div class="table-container">
             <div class="tabla-head">
                 <h1>Cines</h1>
@@ -87,12 +73,12 @@
                     <?php foreach ($rows as $row) { ?>
                         <tr>
                             <td><?php echo $row['id_cine'] ?></td>
-                            <td><?php echo $row['nombre_cine']?></td>
+                            <td><?php echo $row['nombre_cine'] ?></td>
                             <td><?php echo $row['municipio'] ?></td>
-                            <td><?php echo $row['no_salas']?></td>
-                            <td><?php echo $row['domicilio_cine']?></td>
-                            <td><?php echo $row['telefono_cine']?></td>
-                            <td><?php echo $row['correo_cine']?></td>
+                            <td><?php echo $row['no_salas'] ?></td>
+                            <td><?php echo $row['domicilio_cine'] ?></td>
+                            <td><?php echo $row['telefono_cine'] ?></td>
+                            <td><?php echo $row['correo_cine'] ?></td>
                             <td><a href="editar_cine.php?id=<?php echo $row['id_cine'] ?>">Editar</a></td>
                             <td><a href="borrar_cine.php?id=<?php echo $row['id_cine'] ?>" onclick="return confirm('Estás seguro de querer borrar?');">Borrar</a></td>
                         </tr>

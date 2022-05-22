@@ -15,10 +15,11 @@ body{
 }
 
 .navig{
-    width: 60%;
+    width: fit-content;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    gap: 10px;
 }
 
 .navig select{
@@ -30,6 +31,14 @@ body{
     font-size: 30px;
     text-decoration: none;
     font-weight: bold;
+}
+
+.select-principal{
+  height: 345px;
+  width: 200px;
+  border-radius: 2.5px;
+  border: 1px solid rgb(197, 197, 197);
+  color: rgb(105, 105, 105);
 }
 
 .login{
@@ -46,6 +55,7 @@ body{
     text-decoration: none;
     font-weight: bold;
     color: rgb(58, 33, 18);
+    cursor: pointer;
 }
 
 /* Slideshow container */
@@ -177,8 +187,19 @@ body{
 }
 
 .tabla, th, td{
-  border: 1px solid black;
+  border: 1.5px solid black;
   border-collapse:collapse;
+}
+
+.tabla th{
+  color: #fff;
+  background-color: rgb(41, 100, 207);
+  height: 50px;
+}
+
+.tabla td{
+  background-color: rgb(132, 169, 236);
+  height: 50px;
 }
 
 .tabla{
