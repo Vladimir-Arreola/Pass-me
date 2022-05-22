@@ -1,3 +1,29 @@
+<?php
+require "conn.php";
+
+$id = $_GET["id"];
+
+
+$sql = "SELECT P.*, C.nombre_cine FROM pelicula P INNER JOIN cine C on P.id_cine = C.id_cine WHERE id_pelicula = '$id'";
+$result = $conn->query($sql);
+$rows = $result->fetchAll();
+
+if (empty($rows)) {
+    $result = "No existe el registro o ya fue borrado";
+    $datos = array();
+    for ($i = 0; $i < 11; $i++) {
+        $datos[$i] = 'No existe dato';
+    }
+} else {
+    $result = "Se borró exitosamente";
+    foreach ($rows as $row) {
+        $datos = array($row['id_pelicula'], $row['nombre_cine'], $row['pelicula'], $row['clasificacion'], $row['director'], $row['genero'], $row['duracion'], $row['idioma'], $row['horario'], $row['foto_poster']);
+    }
+    $sql_borrar = "DELETE FROM pelicula WHERE id_pelicula=" . $id;
+    $conn->query($sql_borrar);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -6,7 +32,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css">
-    <script src="../js/valida_municipios.js"></script>
     <title>Cinépolis</title>
 </head>
 
@@ -63,18 +88,47 @@
 
         <div class="table-container">
             <div class="tabla-head">
-                <h1>Municipios</h1>
+                <h1>Películas</h1>
+                <?php echo $result?>
             </div>
-            <form action="guardar_municipio.php" method="post" class="form-guar" onsubmit="return validarMunicipio()">
+            <form action="guardar_pelicula.php" method="post" class="form-guar">
                 <div class="input-form">
-                    <label for="login">Id</label>
-                    <input type="text" name="id_municipio" id="id_municipio">
+                    <label for="id_peliculas">Id</label>
+                    <input type="text" name="id_peliculas" id="id_peliculas" value="<?php echo $datos[0] ?>" disabled>
+                </div>
+                <div class="input-form">
+                    <label for="cine">Cine</label>
+                    <input type="text" name="cine" id="cine" value="<?php echo $datos[1]?>" disabled>
                 </div>
                 <div class="input-form">
                     <label for="nombre">Nombre</label>
-                    <input type="text" name="nombre" id="nombre">
+                    <input type="text" name="nombre" id="nombre" value="<?php echo $datos[2] ?>" disabled>
                 </div>
-                <input type="submit" value="Guardar" class="boton boton-save" >
+                <div class="input-form">
+                    <label for="clasificación">Clasificación</label>
+                    <input type="text" name="clasificación" id="clasificación" value="<?php echo $datos[3] ?>" disabled>
+                </div>
+                <div class="input-form">
+                    <label for="director">Director</label>
+                    <input type="text" name="director" id="director" value="<?php echo $datos[4] ?>" disabled>
+                </div>
+                <div class="input-form">
+                    <label for="genero">Genero</label>
+                    <input type="text" name="genero" id="genero" value="<?php echo $datos[5] ?>" disabled>
+                </div>
+                <div class="input-form">
+                    <label for="duracion">Duracion</label>
+                    <input type="time" name="duracion" id="duracion" value="<?php echo $datos[6] ?>" disabled>
+                </div>
+                <div class="input-form">
+                    <label for="idioma">Idioma</label>
+                    <input type="text" name="idioma" id="idioma" value="<?php echo $datos[7] ?>" disabled>
+                </div>
+                <div class="input-form">
+                    <label for="horario">Horario</label>
+                    <input type="datetime-local" name="horario" id="horario" value="<?php echo $datos[8] ?>" disabled>
+                </div>
+
             </form>
         </div>
     </div>

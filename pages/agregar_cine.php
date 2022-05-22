@@ -15,6 +15,7 @@ $rows = $result->fetchAll();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/validar_cines.js"></script>
     <title>Cinépolis</title>
 </head>
 
@@ -73,9 +74,9 @@ $rows = $result->fetchAll();
             <div class="tabla-head">
                 <h1>Cines</h1>
             </div>
-            <form action="guardar_cine.php" method="post" class="form-guar">
+            <form action="guardar_cine.php" method="post" class="form-guar" onsubmit="return validarCine()">
                 <div class="input-form">
-                    <label for="login">Id</label>
+                    <label for="id_cine">Id</label>
                     <input type="text" name="id_cine" id="id_cine">
                 </div>
                 <div class="input-form">
@@ -105,7 +106,7 @@ $rows = $result->fetchAll();
                 </div>
                 <div class="input-form">
                     <label for="correo">Correo</label>
-                    <input type="text" name="correo" id="correo">
+                    <input type="email" name="correo" id="correo">
                 </div>
                 <input type="submit" value="Guardar" class="boton boton-save">
             </form>

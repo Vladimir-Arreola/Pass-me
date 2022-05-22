@@ -6,11 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css">
-    <script src="../js/valida_municipios.js"></script>
     <title>Cinépolis</title>
 </head>
 
 <body>
+    <?php require "conn.php";
+
+    $sql = "SELECT P.*, C.nombre_cine FROM pelicula P INNER JOIN cine C on P.id_cine = C.id_cine";
+    $result = $conn->query($sql);
+    $rows = $result->fetchAll();
+    ?>
     <header class="header">
         <nav class="navig">
             <a href="#" class="logo">Cinépolis</a>
@@ -59,23 +64,49 @@
     </div>
 
     <div class="container">
-        <?php require 'aside_menu.php' ?>
-
+        <?php require "aside_menu.php" ?>
+        
         <div class="table-container">
             <div class="tabla-head">
-                <h1>Municipios</h1>
+                <h1>Películas</h1>
+                <a href="agregar_pelis.php">Agregar película</a>
             </div>
-            <form action="guardar_municipio.php" method="post" class="form-guar" onsubmit="return validarMunicipio()">
-                <div class="input-form">
-                    <label for="login">Id</label>
-                    <input type="text" name="id_municipio" id="id_municipio">
-                </div>
-                <div class="input-form">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" name="nombre" id="nombre">
-                </div>
-                <input type="submit" value="Guardar" class="boton boton-save" >
-            </form>
+            <table class="tabla">
+                <thead>
+                    <th>ID</th>
+                    <th>Cine</th>
+                    <th>Pelicula</th>
+                    <th>Clasificación</th>
+                    <th>Director</th>
+                    <th>Genero</th>
+                    <th>Duración</th>
+                    <th>Idioma</th>
+                    <th>Horario</th>
+                    <th>Poster</th>
+                    <th>Editar</th>
+                    <th>Borrar</th>
+                </thead>
+                <tbody>
+                    <?php foreach ($rows as $row) { ?>
+                        <tr>
+                            <td><?php echo $row['id_pelicula'] ?></td>
+                            <td><?php echo $row['nombre_cine']?></td>
+                            <td><?php echo $row['pelicula'] ?></td>
+                            <td><?php echo $row['clasificacion']?></td>
+                            <td><?php echo $row['director']?></td>
+                            <td><?php echo $row['genero']?></td>
+                            <td><?php echo $row['duracion']?></td>
+                            <td><?php echo $row['idioma']?></td>
+                            <td><?php echo $row['horario']?></td>
+                            <td>
+                                <img src="data:image/png;base64, <?php echo base64_encode($row['foto_poster'])?>" alt="poster" class="poster-peli">
+                            </td>
+                            <td><a href="editar_pelicula.php?id=<?php echo $row['id_pelicula'] ?>">Editar</a></td>
+                            <td><a href="borrar_pelicula.php?id=<?php echo $row['id_pelicula'] ?>" onclick="return confirm('Estás seguro de querer borrar?');">Borrar</a></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
         </div>
     </div>
     <section class="info">

@@ -1,3 +1,10 @@
+<?php require "conn.php";
+
+$sql = "SELECT * FROM cine";
+$result = $conn->query($sql);
+$rows = $result->fetchAll();
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -6,7 +13,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css">
-    <script src="../js/valida_municipios.js"></script>
     <title>Cinépolis</title>
 </head>
 
@@ -63,18 +69,54 @@
 
         <div class="table-container">
             <div class="tabla-head">
-                <h1>Municipios</h1>
+                <h1>Películas</h1>
             </div>
-            <form action="guardar_municipio.php" method="post" class="form-guar" onsubmit="return validarMunicipio()">
+            <form action="guardar_pelicula.php" method="post" enctype='multipart/form-data'   class="form-guar">
                 <div class="input-form">
-                    <label for="login">Id</label>
-                    <input type="text" name="id_municipio" id="id_municipio">
+                    <label for="id_pelicula">Id</label>
+                    <input type="text" name="id_pelicula" id="id_pelicula">
+                </div>
+                <div class="input-form">
+                    <label for="cine">Cine</label>
+                    <select name="cine" id="cine">
+                        <?php foreach($rows as $row){?>
+                            <option value="<?php echo $row['id_cine']?>"><?php echo $row['nombre_cine']?></option>
+                        <?php } ?>
+                    </select>
                 </div>
                 <div class="input-form">
                     <label for="nombre">Nombre</label>
                     <input type="text" name="nombre" id="nombre">
                 </div>
-                <input type="submit" value="Guardar" class="boton boton-save" >
+                <div class="input-form">
+                    <label for="clasificacion">Clasificación</label>
+                    <input type="text" name="clasificacion" id="clasificacion">
+                </div>
+                <div class="input-form">
+                    <label for="director">Director</label>
+                    <input type="text" name="director" id="director">
+                </div>
+                <div class="input-form">
+                    <label for="genero">Genero</label>
+                    <input type="text" name="genero" id="genero">
+                </div>
+                <div class="input-form">
+                    <label for="duracion">Duracion</label>
+                    <input type="number" name="duracion" id="duracion">
+                </div>
+                <div class="input-form">
+                    <label for="idioma">Idioma</label>
+                    <input type="text" name="idioma" id="idioma">
+                </div>
+                <div class="input-form">
+                    <label for="horario">Horario</label>
+                    <input type="datetime-local" name="horario" id="horario">
+                </div>
+                <div class="input-form">
+                    <label for="poster">Poster</label>
+                    <input type="file" name="poster" id="poster">
+                </div>
+                <input type="submit" value="Guardar" class="boton boton-save">
             </form>
         </div>
     </div>

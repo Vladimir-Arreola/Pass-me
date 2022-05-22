@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/valida_usuarios.js"></script>
     <title>Cinépolis</title>
 </head>
 
@@ -81,7 +82,7 @@
                     <label for="nombre">Nombre</label>
                     <input type="text" name="nombre" id="nombre">
                 </div>
-                <input type="submit" value="Guardar" class="boton boton-save">
+                <input type="submit" value="Guardar" class="boton boton-save" onclick="return validarUsuarios()">
             </form>
         </div>
     </div>

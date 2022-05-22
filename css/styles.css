@@ -219,3 +219,9 @@ body{
   width: 100%;
   float: right;
 }
+
+.poster-peli{
+  height: 200px;
+  width: 100px;
+  margin: 5px;
+}

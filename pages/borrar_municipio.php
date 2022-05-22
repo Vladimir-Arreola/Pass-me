@@ -1,8 +1,6 @@
 <?php
     require "conn.php";
 
-    require "conn.php";
-
     $id = $_GET["id"];
     
     $sql_valida = "SELECT * FROM municipio WHERE id_municipio=" . $id;

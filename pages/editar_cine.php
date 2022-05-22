@@ -19,6 +19,7 @@ $rows_municipios = $result_municipio->fetchAll();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/validar_cines.js"></script>
     <title>Cinépolis</title>
 </head>
 
@@ -77,7 +78,7 @@ $rows_municipios = $result_municipio->fetchAll();
             <div class="tabla-head">
                 <h1>Cines</h1>
             </div>
-            <form action="actualizar_cine.php" method="post" class="form-guar">
+            <form action="actualizar_cine.php" method="post" class="form-guar" onsubmit="return validarCine()">
                 <?php
                 foreach ($rows as $row) {
                 ?>
@@ -113,7 +114,7 @@ $rows_municipios = $result_municipio->fetchAll();
                     </div>
                     <div class="input-form">
                         <label for="correo">Correo</label>
-                        <input type="text" name="correo" id="correo" value="<?php echo $row['correo_cine'] ?> ">
+                        <input type="email" name="correo" id="correo" value="<?php echo $row['correo_cine'] ?> ">
                     </div>
                 <?php } ?>
                 <input type="submit" value="Guardar" class="boton boton-save">

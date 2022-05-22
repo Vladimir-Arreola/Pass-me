@@ -1,15 +1,15 @@
 <?php
-    require "conn.php";
+require "conn.php";
 
-    $id = $_GET['id'];
-    $sql = "SELECT * FROM municipio WHERE id_municipio=" .$id;
-    $result = $conn->query($sql);
-    $rows = $result->fetchAll();
+$id = $_GET['id'];
+$sql = "SELECT * FROM municipio WHERE id_municipio=" . $id;
+$result = $conn->query($sql);
+$rows = $result->fetchAll();
 
-    foreach ($rows as $row) {
-        $id = $row['id_municipio'];
-        $municipio = $row['municipio'];
-    }
+foreach ($rows as $row) {
+    $id = $row['id_municipio'];
+    $municipio = $row['municipio'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -19,6 +19,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/valida_municipios.js"></script>
     <title>Cinépolis</title>
 </head>
 
@@ -77,15 +78,15 @@
             <div class="tabla-head">
                 <h1>Municipios</h1>
             </div>
-            <form action="actualizar_municipio.php" method="post" class="form-guar">
+            <form action="actualizar_municipio.php" method="post" class="form-guar" onsubmit="return validarMunicipio()">
                 <div class="input-form">
                     <label for="login">Id</label>
-                    <input type="text" name="id_municipio" id="id_municipio" value="<?php echo $id?>" disabled>
-                    <input type="hidden" name="idreal" id="idreal" value="<?php echo $id?>">
+                    <input type="text" name="id_municipio" id="id_municipio" value="<?php echo $id ?>" disabled>
+                    <input type="hidden" name="idreal" id="idreal" value="<?php echo $id ?>">
                 </div>
                 <div class="input-form">
                     <label for="nombre">Nombre</label>
-                    <input type="text" name="nombre" id="nombre" value="<?php echo $municipio?>">
+                    <input type="text" name="nombre" id="nombre" value="<?php echo $municipio ?>">
                 </div>
                 <input type="submit" value="Guardar" class="boton boton-save">
             </form>

@@ -1,3 +1,22 @@
+<?php
+
+require "conn.php";
+
+$id = $_POST["id_real"];
+$id_cine = $_POST["cine"];
+$nombre = $_POST["nombre"];
+$clasificacion = $_POST["clasificacion"];
+$director = $_POST["director"];
+$genero = $_POST["genero"];
+$duracion = $_POST["duracion"];
+$idioma = $_POST["idioma"];
+$horario = $_POST["horario"];
+$poster = addslashes(file_get_contents($_FILES['poster']['tmp_name']));
+
+$sql_actualizar = "UPDATE pelicula SET id_cine = $id_cine, pelicula = '$nombre', clasificacion = '$clasificacion', director = '$director', genero = '$genero', duracion = '$duracion', idioma = '$idioma', horario = '$horario', foto_poster = '$poster' WHERE id_pelicula=" . $id;
+$conn->query($sql_actualizar);
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -6,7 +25,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css">
-    <script src="../js/valida_municipios.js"></script>
     <title>Cinépolis</title>
 </head>
 
@@ -63,18 +81,46 @@
 
         <div class="table-container">
             <div class="tabla-head">
-                <h1>Municipios</h1>
+                <h1>Películas</h1>
             </div>
-            <form action="guardar_municipio.php" method="post" class="form-guar" onsubmit="return validarMunicipio()">
+            <form action="guardar_pelicula.php" method="post" class="form-guar">
                 <div class="input-form">
-                    <label for="login">Id</label>
-                    <input type="text" name="id_municipio" id="id_municipio">
+                    <label for="id_peliculas">Id</label>
+                    <input type="text" name="id_peliculas" id="id_peliculas" value="<?php echo $id?>" disabled>
+                </div>
+                <div class="input-form">
+                    <label for="cine">Cine</label>
+                    
                 </div>
                 <div class="input-form">
                     <label for="nombre">Nombre</label>
-                    <input type="text" name="nombre" id="nombre">
+                    <input type="text" name="nombre" id="nombre" value="<?php echo $nombre?>" disabled>
                 </div>
-                <input type="submit" value="Guardar" class="boton boton-save" >
+                <div class="input-form">
+                    <label for="clasificación">Clasificación</label>
+                    <input type="text" name="clasificación" id="clasificación" value="<?php echo $clasificacion?>" disabled>
+                </div>
+                <div class="input-form">
+                    <label for="director">Director</label>
+                    <input type="text" name="director" id="director" value="<?php echo $director?>" disabled>
+                </div>
+                <div class="input-form">
+                    <label for="genero">Genero</label>
+                    <input type="text" name="genero" id="genero" value="<?php echo $genero?>" disabled>
+                </div>
+                <div class="input-form">
+                    <label for="duracion">Duracion</label>
+                    <input type="time" name="duracion" id="duracion" value="<?php echo $duracion?>" disabled>
+                </div>
+                <div class="input-form">
+                    <label for="idioma">Idioma</label>
+                    <input type="text" name="idioma" id="idioma" value="<?php echo $idioma?>" disabled>
+                </div>
+                <div class="input-form">
+                    <label for="horario">Horario</label>
+                    <input type="datetime-local" name="horario" id="horario" value="<?php echo $horario?>" disabled>
+                </div>
+               
             </form>
         </div>
     </div>
